@@ -1,20 +1,10 @@
-const add = (x, y) => {
-  return x + y;
-};
-
-const substract = (x, y) => {
-  return x - y;
-};
-
-const multiply = (x, y) => {
-  return x * y;
-};
-
+const add = (x, y) => x + y;
+const substract = (x, y) => x - y;
+const multiply = (x, y) => x * y;
 const divide = (x, y) => {
   if (y === 0) {
     alert("Cannot divided by zero.");
   }
-
   return x / y;
 };
 
@@ -32,5 +22,3 @@ const operate = (firstNumber, mathOperator, secondNumber) => {
       alert("You cannot do that!");
   }
 };
-
-console.log(operate(100, "*", 10));
