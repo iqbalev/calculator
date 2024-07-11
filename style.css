@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: "Chelsea Market", sans-serif;
+  background-color: #3a3a3a;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+}
+
+.display {
+  padding: 20px;
+  margin-top: 20px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  text-align: right;
+  font-size: 1.3rem;
+  background-color: #e0d1d1;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons button {
+  padding: 10px;
+  border: none;
+  font-family: "Chelsea Market", sans-serif;
+  font-size: 1.3rem;
+  color: #3a3a3a;
+  background-color: #e0d1d1;
+  cursor: pointer;
+}
+
+.row {
+  display: flex;
+}
+
+.row button {
+  flex: 1;
+}
+
+.row.first button:nth-child(3),
+.row.second button:nth-child(4),
+.row.third button:nth-child(4),
+.row.fourth button:nth-child(4) {
+  background-color: #e2a480;
+}
+
+.row.first button:nth-child(1) {
+  flex: 2.5;
+  background-color: #df9292;
+}
+
+.row.first button:nth-child(2) {
+  background-color: #df9292;
+}
+
+.row.fifth button:nth-child(3) {
+  flex: 2.5;
+  background-color: rgb(231, 233, 140);
+}
