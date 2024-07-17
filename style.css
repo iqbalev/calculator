@@ -9,66 +9,52 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  font-family: "Chelsea Market", sans-serif;
-  background-color: #3a3a3a;
+  font-family: Poppins, sans-serif;
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  width: 250px;
+  gap: 20px;
+  width: 350px;
+  padding: 20px;
 }
 
 .display {
   padding: 20px;
-  margin-top: 20px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-bottom: 1px solid #808080;
   text-align: right;
-  font-size: 1.3rem;
-  background-color: #e0d1d1;
+  font-size: 1.5rem;
 }
 
 .buttons {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
 .buttons button {
   padding: 10px;
   border: none;
-  font-family: "Chelsea Market", sans-serif;
-  font-size: 1.3rem;
-  color: #3a3a3a;
-  background-color: #e0d1d1;
+  font-family: Poppins, sans-serif;
+  font-size: 1.5rem;
+  background-color: transparent;
   cursor: pointer;
+}
+
+.buttons button:hover {
+  background-color: #eeeeee;
+}
+
+.operator {
+  color: #ff4500;
 }
 
 .row {
   display: flex;
+  gap: 10px;
 }
 
 .row button {
   flex: 1;
-}
-
-.row.first button:nth-child(3),
-.row.second button:nth-child(4),
-.row.third button:nth-child(4),
-.row.fourth button:nth-child(4) {
-  background-color: #e2a480;
-}
-
-.row.first button:nth-child(1) {
-  flex: 2.5;
-  background-color: #df9292;
-}
-
-.row.first button:nth-child(2) {
-  background-color: #df9292;
-}
-
-.row.fifth button:nth-child(3) {
-  flex: 2.5;
-  background-color: rgb(231, 233, 140);
 }
