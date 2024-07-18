@@ -3,7 +3,7 @@ const clearButton = document.getElementById("clear");
 const numberButtons = document.querySelectorAll(".number");
 const mathOperatorButtons = document.querySelectorAll(".operator");
 const addButton = document.getElementById("add");
-const substractButton = document.getElementById("substract");
+const subtractButton = document.getElementById("subtract");
 const divideButton = document.getElementById("divide");
 const multiplyButton = document.getElementById("multiply");
 const equalsButton = document.getElementById("equals");
@@ -31,7 +31,7 @@ mathOperatorButtons.forEach((operator) => {
     isOperatorSelected = true;
     if (operator === addButton) {
       selectedOperator = "+";
-    } else if (operator === substractButton) {
+    } else if (operator === subtractButton) {
       selectedOperator = "-";
     } else if (operator === multiplyButton) {
       selectedOperator = "x";
@@ -49,7 +49,7 @@ equalsButton.addEventListener("click", () => {
 clearButton.addEventListener("click", () => clearDisplay());
 
 const add = (x, y) => x + y;
-const substract = (x, y) => x - y;
+const subtract = (x, y) => x - y;
 const multiply = (x, y) => x * y;
 const divide = (x, y) => {
   if (y === 0) {
@@ -63,7 +63,7 @@ const operate = (mathOperator, firstNumber, secondNumber) => {
     case "+":
       return add(firstNumber, secondNumber);
     case "-":
-      return substract(firstNumber, secondNumber);
+      return subtract(firstNumber, secondNumber);
     case "x":
       return multiply(firstNumber, secondNumber);
     case "/":
