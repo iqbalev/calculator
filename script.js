@@ -1,10 +1,11 @@
 const display = document.getElementById("display");
+const clearButton = document.getElementById("clear");
 const numberButtons = document.querySelectorAll(".number");
 const mathOperatorButtons = document.querySelectorAll(".operator");
 const addButton = document.getElementById("add");
 const substractButton = document.getElementById("substract");
-const multiplyButton = document.getElementById("multiply");
 const divideButton = document.getElementById("divide");
+const multiplyButton = document.getElementById("multiply");
 const equalsButton = document.getElementById("equals");
 
 let finalResult = "";
@@ -14,7 +15,7 @@ let secondInput = "";
 let isOperatorSelected = false;
 
 numberButtons.forEach((number) => {
-  number.addEventListener("click", function () {
+  number.addEventListener("click", () => {
     if (isOperatorSelected === false) {
       firstInput += number.textContent;
       display.textContent = firstInput;
@@ -26,7 +27,7 @@ numberButtons.forEach((number) => {
 });
 
 mathOperatorButtons.forEach((operator) => {
-  operator.addEventListener("click", function () {
+  operator.addEventListener("click", () => {
     isOperatorSelected = true;
     if (operator === addButton) {
       selectedOperator = "+";
@@ -40,10 +41,12 @@ mathOperatorButtons.forEach((operator) => {
   });
 });
 
-equalsButton.addEventListener("click", function () {
+equalsButton.addEventListener("click", () => {
   calculateResult();
   displayResult();
 });
+
+clearButton.addEventListener("click", () => clearDisplay());
 
 const add = (x, y) => x + y;
 const substract = (x, y) => x - y;
@@ -74,3 +77,12 @@ const calculateResult = () =>
   (finalResult = operate(selectedOperator, firstInput, secondInput));
 
 const displayResult = () => (display.textContent = finalResult);
+
+const clearDisplay = () => {
+  finalResult = "";
+  selectedOperator = "";
+  firstInput = "";
+  secondInput = "";
+
+  display.textContent = 0;
+};
