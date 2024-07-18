@@ -61,7 +61,7 @@ const divide = (x, y) => {
 const operate = (mathOperator, firstNumber, secondNumber) => {
   switch (mathOperator) {
     case "+":
-      return add(firstNumber), secondNumber;
+      return add(firstNumber, secondNumber);
     case "-":
       return substract(firstNumber, secondNumber);
     case "x":
