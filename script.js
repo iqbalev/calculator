@@ -56,7 +56,7 @@ const subtract = (x, y) => x - y;
 const multiply = (x, y) => x * y;
 const divide = (x, y) => {
   if (y === 0) {
-    alert("Cannot divided by zero.");
+    alert("Number cannot be divided by zero.");
   }
   return x / y;
 };
@@ -77,15 +77,17 @@ const operate = (mathOperator, firstNumber, secondNumber) => {
 };
 
 const calculateResult = () => {
-  finalResult = operate(selectedOperator, firstInput, secondInput);
+  finalResult = operate(
+    selectedOperator,
+    parseFloat(firstInput),
+    parseFloat(secondInput)
+  );
 
   // Final result will be used as first input, so it can be used for next calculation
-  firstInput = "";
+  firstInput = finalResult.toString();
   secondInput = "";
   selectedOperator = "";
   isOperatorSelected = false;
-
-  firstInput = finalResult;
 };
 
 const displayResult = () => (display.textContent = finalResult);
