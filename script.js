@@ -76,8 +76,17 @@ const operate = (mathOperator, firstNumber, secondNumber) => {
   }
 };
 
-const calculateResult = () =>
-  (finalResult = operate(selectedOperator, firstInput, secondInput));
+const calculateResult = () => {
+  finalResult = operate(selectedOperator, firstInput, secondInput);
+
+  // Final result will be used as first input, so it can be used for next calculation
+  firstInput = "";
+  secondInput = "";
+  selectedOperator = "";
+  isOperatorSelected = false;
+
+  firstInput = finalResult;
+};
 
 const displayResult = () => (display.textContent = finalResult);
 
