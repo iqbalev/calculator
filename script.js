@@ -9,7 +9,7 @@ const divideButton = document.getElementById("divide");
 const multiplyButton = document.getElementById("multiply");
 const equalsButton = document.getElementById("equals");
 
-let finalResult = "";
+let result = "";
 let selectedOperator = "";
 let firstInput = "";
 let secondInput = "";
@@ -44,10 +44,9 @@ mathOperatorButtons.forEach((operator) => {
 
 equalsButton.addEventListener("click", () => {
   calculateResult();
-  displayResult();
 });
 
-clearButton.addEventListener("click", () => clearDisplay());
+clearButton.addEventListener("click", () => clearResult());
 
 deleteButton.addEventListener("click", () => deleteInput());
 
@@ -77,23 +76,23 @@ const operate = (mathOperator, firstNumber, secondNumber) => {
 };
 
 const calculateResult = () => {
-  finalResult = operate(
+  result = operate(
     selectedOperator,
     parseFloat(firstInput),
     parseFloat(secondInput)
   );
 
+  display.textContent = result;
+
   // Final result will be used as first input, so it can be used for next calculation
-  firstInput = finalResult.toString();
+  firstInput = result.toString();
   secondInput = "";
   selectedOperator = "";
   isOperatorSelected = false;
 };
 
-const displayResult = () => (display.textContent = finalResult);
-
-const clearDisplay = () => {
-  finalResult = "";
+const clearResult = () => {
+  result = "";
   selectedOperator = "";
   firstInput = "";
   secondInput = "";
