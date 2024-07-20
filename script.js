@@ -14,13 +14,20 @@ let selectedOperator = "";
 let firstInput = "";
 let secondInput = "";
 let isOperatorSelected = false;
+let isResultGenerated = false;
 
 numberButtons.forEach((number) => {
   number.addEventListener("click", () => {
-    if (isOperatorSelected === false) {
+    if (isResultGenerated && !isOperatorSelected) {
+      firstInput = "";
+    }
+
+    isResultGenerated = false;
+
+    if (!isOperatorSelected) {
       firstInput += number.textContent;
       display.textContent = firstInput;
-    } else if (isOperatorSelected === true) {
+    } else {
       secondInput += number.textContent;
       display.textContent = secondInput;
     }
@@ -89,6 +96,7 @@ const calculateResult = () => {
   secondInput = "";
   selectedOperator = "";
   isOperatorSelected = false;
+  isResultGenerated = true;
 };
 
 const clearResult = () => {
@@ -102,10 +110,10 @@ const clearResult = () => {
 };
 
 const deleteInput = () => {
-  if (isOperatorSelected === false) {
+  if (!isOperatorSelected) {
     firstInput = firstInput.slice(0, -1);
     display.textContent = firstInput || 0;
-  } else if (isOperatorSelected === true) {
+  } else {
     secondInput = secondInput.slice(0, -1);
     display.textContent = secondInput || 0;
   }
