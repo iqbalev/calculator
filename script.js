@@ -39,11 +39,9 @@ dotButton.addEventListener("click", () => {
   if (!isOperatorSelected && !firstInput.includes(".")) {
     firstInput += dotButton.textContent;
     display.textContent = firstInput;
-    console.log(firstInput);
   } else if (isOperatorSelected && !secondInput.includes(".")) {
     secondInput += dotButton.textContent;
     display.textContent = secondInput;
-    console.log(secondInput);
   }
 });
 
