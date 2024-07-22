@@ -2,6 +2,7 @@ const display = document.getElementById("display");
 const clearButton = document.getElementById("clear");
 const deleteButton = document.getElementById("delete");
 const numberButtons = document.querySelectorAll(".number");
+const dotButton = document.getElementById("dot");
 const mathOperatorButtons = document.querySelectorAll(".operator");
 const addButton = document.getElementById("add");
 const subtractButton = document.getElementById("subtract");
@@ -32,6 +33,18 @@ numberButtons.forEach((number) => {
       display.textContent = secondInput;
     }
   });
+});
+
+dotButton.addEventListener("click", () => {
+  if (!isOperatorSelected && !firstInput.includes(".")) {
+    firstInput += dotButton.textContent;
+    display.textContent = firstInput;
+    console.log(firstInput);
+  } else if (isOperatorSelected && !secondInput.includes(".")) {
+    secondInput += dotButton.textContent;
+    display.textContent = secondInput;
+    console.log(secondInput);
+  }
 });
 
 mathOperatorButtons.forEach((operator) => {
