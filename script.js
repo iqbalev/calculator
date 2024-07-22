@@ -10,6 +10,8 @@ const divideButton = document.getElementById("divide");
 const multiplyButton = document.getElementById("multiply");
 const equalsButton = document.getElementById("equals");
 
+const maximumNumberOfInputCharacters = 11;
+
 let result = "";
 let selectedOperator = "";
 let firstInput = "";
@@ -26,11 +28,15 @@ numberButtons.forEach((number) => {
     isResultGenerated = false;
 
     if (!isOperatorSelected) {
-      firstInput += number.textContent;
-      display.textContent = firstInput;
+      if (firstInput.length < maximumNumberOfInputCharacters) {
+        firstInput += number.textContent;
+        display.textContent = firstInput;
+      }
     } else {
-      secondInput += number.textContent;
-      display.textContent = secondInput;
+      if (secondInput.length < maximumNumberOfInputCharacters) {
+        secondInput += number.textContent;
+        display.textContent = secondInput;
+      }
     }
   });
 });
