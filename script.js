@@ -34,11 +34,11 @@ const operate = (mathOperator, firstNumber, secondNumber) => {
   switch (mathOperator) {
     case "+":
       return add(firstNumber, secondNumber);
-    case "-":
+    case "−":
       return subtract(firstNumber, secondNumber);
-    case "*":
+    case "×":
       return multiply(firstNumber, secondNumber);
-    case "/":
+    case "÷":
       return divide(firstNumber, secondNumber);
     default:
       return "Invalid operation";
@@ -72,6 +72,7 @@ const clearResult = () => {
   firstInput = "";
   secondInput = "";
   isOperatorSelected = false;
+  isResultGenerated = false;
   display.textContent = 0;
 };
 
@@ -121,16 +122,7 @@ mathOperatorButtons.forEach((operator) => {
   operator.addEventListener("click", () => {
     if (!isOperatorSelected || isResultGenerated) {
       isOperatorSelected = true;
-
-      if (operator === addButton) {
-        selectedOperator = "+";
-      } else if (operator === subtractButton) {
-        selectedOperator = "-";
-      } else if (operator === multiplyButton) {
-        selectedOperator = "*";
-      } else if (operator === divideButton) {
-        selectedOperator = "/";
-      }
+      selectedOperator = operator.textContent;
       isResultGenerated = false;
     }
   });
