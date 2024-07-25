@@ -5,12 +5,7 @@ const deleteButton = document.getElementById("delete");
 const numberButtons = document.querySelectorAll(".number");
 const dotButton = document.getElementById("dot");
 const mathOperatorButtons = document.querySelectorAll(".operator");
-const addButton = document.getElementById("add");
-const subtractButton = document.getElementById("subtract");
-const divideButton = document.getElementById("divide");
-const multiplyButton = document.getElementById("multiply");
 const equalsButton = document.getElementById("equals");
-const maximumNumberOfInputCharacters = 11;
 
 let result = "";
 let selectedOperator = "";
@@ -18,6 +13,7 @@ let firstInput = "";
 let secondInput = "";
 let isOperatorSelected = false;
 let isResultGenerated = false;
+const maximumNumberOfInputCharacters = 11;
 
 // LIST OF FUNCTIONS
 const add = (x, y) => x + y;
