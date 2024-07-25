@@ -19,13 +19,7 @@ const maximumNumberOfInputCharacters = 11;
 const add = (x, y) => x + y;
 const subtract = (x, y) => x - y;
 const multiply = (x, y) => x * y;
-const divide = (x, y) => {
-  if (y === 0) {
-    return "Error";
-  }
-  return x / y;
-};
-
+const divide = (x, y) => (y === 0 ? "Error" : x / y);
 const operate = (mathOperator, firstNumber, secondNumber) => {
   switch (mathOperator) {
     case "+":
@@ -131,5 +125,4 @@ equalsButton.addEventListener("click", () => {
 });
 
 clearButton.addEventListener("click", () => clearResult());
-
 deleteButton.addEventListener("click", () => deleteInput());
