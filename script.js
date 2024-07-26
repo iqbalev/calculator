@@ -7,9 +7,9 @@ const dotButton = document.getElementById("dot");
 const mathOperatorButtons = document.querySelectorAll(".operator");
 const equalsButton = document.getElementById("equals");
 let result = "";
-let selectedOperator = "";
 let firstInput = "";
 let secondInput = "";
+let selectedOperator = "";
 let isOperatorSelected = false;
 let isResultGenerated = false;
 const maximumNumberOfInputCharacters = 11;
@@ -20,8 +20,8 @@ const subtract = (x, y) => x - y;
 const multiply = (x, y) => x * y;
 const divide = (x, y) => (y === 0 ? "Error" : x / y);
 
-const operate = (mathOperator, firstNumber, secondNumber) => {
-  switch (mathOperator) {
+const operate = (operator, firstNumber, secondNumber) => {
+  switch (operator) {
     case "+":
       return add(firstNumber, secondNumber);
     case "−":
@@ -37,9 +37,9 @@ const operate = (mathOperator, firstNumber, secondNumber) => {
 
 const clearResult = () => {
   result = "";
-  selectedOperator = "";
   firstInput = "";
   secondInput = "";
+  selectedOperator = "";
   isOperatorSelected = false;
   isResultGenerated = false;
   display.textContent = 0;
@@ -55,7 +55,7 @@ const deleteInput = () => {
   }
 };
 
-const handleNumber = (number) => {
+const inputNumber = (number) => {
   if (isResultGenerated && !isOperatorSelected) {
     firstInput = "";
   }
@@ -74,7 +74,7 @@ const handleNumber = (number) => {
   }
 };
 
-const handleDot = () => {
+const inputDot = () => {
   if (!isOperatorSelected && !firstInput.includes(".")) {
     firstInput += dotButton.textContent;
     display.textContent = firstInput;
@@ -84,7 +84,7 @@ const handleDot = () => {
   }
 };
 
-const handleMathOperator = (operator) => {
+const inputOperator = (operator) => {
   if (!isOperatorSelected || isResultGenerated) {
     isOperatorSelected = true;
     selectedOperator = operator.textContent;
@@ -119,12 +119,12 @@ const calculateResult = () => {
 clearButton.addEventListener("click", () => clearResult());
 deleteButton.addEventListener("click", () => deleteInput());
 numberButtons.forEach((number) =>
-  number.addEventListener("click", () => handleNumber(number))
+  number.addEventListener("click", () => inputNumber(number))
 );
 
-dotButton.addEventListener("click", () => handleDot());
+dotButton.addEventListener("click", () => inputDot());
 mathOperatorButtons.forEach((operator) =>
-  operator.addEventListener("click", () => handleMathOperator(operator))
+  operator.addEventListener("click", () => inputOperator(operator))
 );
 
 equalsButton.addEventListener("click", () => calculateResult());
