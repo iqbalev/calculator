@@ -99,12 +99,12 @@ const inputNumber = (number) => {
 
   if (!isOperatorSelected) {
     if (firstInput.length < maximumNumberOfInputCharacters) {
-      firstInput += number || number.textContent;
+      firstInput += number;
       display.textContent = firstInput;
     }
   } else {
     if (secondInput.length < maximumNumberOfInputCharacters) {
-      secondInput += number || number.textContent;
+      secondInput += number;
       display.textContent = secondInput;
     }
   }
@@ -123,7 +123,7 @@ const inputDot = () => {
 const inputOperator = (operator) => {
   if (!isOperatorSelected || isResultGenerated) {
     isOperatorSelected = true;
-    selectedOperator = operator || operator.textContent;
+    selectedOperator = operator;
     isResultGenerated = false;
   }
 };
@@ -156,12 +156,12 @@ document.addEventListener("keydown", inputKeyPress);
 clearButton.addEventListener("click", () => clearResult());
 deleteButton.addEventListener("click", () => deleteInput());
 numberButtons.forEach((number) =>
-  number.addEventListener("click", () => inputNumber(number))
+  number.addEventListener("click", () => inputNumber(number.textContent))
 );
 
 dotButton.addEventListener("click", () => inputDot());
 mathOperatorButtons.forEach((operator) =>
-  operator.addEventListener("click", () => inputOperator(operator))
+  operator.addEventListener("click", () => inputOperator(operator.textContent))
 );
 
 equalsButton.addEventListener("click", () => calculateResult());
