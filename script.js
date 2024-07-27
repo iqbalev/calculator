@@ -25,10 +25,13 @@ const operate = (operator, firstNumber, secondNumber) => {
     case "+":
       return add(firstNumber, secondNumber);
     case "−":
+    case "-":
       return subtract(firstNumber, secondNumber);
     case "×":
+    case "*":
       return multiply(firstNumber, secondNumber);
     case "÷":
+    case "/":
       return divide(firstNumber, secondNumber);
     default:
       return "Invalid operation";
@@ -55,6 +58,39 @@ const deleteInput = () => {
   }
 };
 
+const inputKeyPress = (event) => {
+  const key = event.key;
+  switch (key) {
+    case "Escape":
+      return clearResult();
+    case "Backspace":
+      return deleteInput();
+    case "0":
+    case "1":
+    case "2":
+    case "3":
+    case "4":
+    case "5":
+    case "6":
+    case "7":
+    case "8":
+    case "9":
+      return inputNumber(key);
+    case ".":
+      return inputDot();
+    case "+":
+    case "-":
+    case "*":
+    case "/":
+      return inputOperator(key);
+    case "Enter":
+    case "=":
+      return calculateResult();
+    default:
+      break;
+  }
+};
+
 const inputNumber = (number) => {
   if (isResultGenerated && !isOperatorSelected) {
     firstInput = "";
@@ -63,12 +99,12 @@ const inputNumber = (number) => {
 
   if (!isOperatorSelected) {
     if (firstInput.length < maximumNumberOfInputCharacters) {
-      firstInput += number.textContent;
+      firstInput += number || number.textContent;
       display.textContent = firstInput;
     }
   } else {
     if (secondInput.length < maximumNumberOfInputCharacters) {
-      secondInput += number.textContent;
+      secondInput += number || number.textContent;
       display.textContent = secondInput;
     }
   }
@@ -87,7 +123,7 @@ const inputDot = () => {
 const inputOperator = (operator) => {
   if (!isOperatorSelected || isResultGenerated) {
     isOperatorSelected = true;
-    selectedOperator = operator.textContent;
+    selectedOperator = operator || operator.textContent;
     isResultGenerated = false;
   }
 };
@@ -116,6 +152,7 @@ const calculateResult = () => {
 };
 
 // LIST OF EVENT LISTENERS
+document.addEventListener("keydown", inputKeyPress);
 clearButton.addEventListener("click", () => clearResult());
 deleteButton.addEventListener("click", () => deleteInput());
 numberButtons.forEach((number) =>
