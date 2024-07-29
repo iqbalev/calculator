@@ -74,3 +74,33 @@ footer a {
   color: #fff;
   border-left: 1px;
 }
+
+@media screen and (max-width: 350px) {
+  main {
+    width: 300px;
+  }
+
+  .display {
+    font-size: 2rem;
+  }
+
+  .row button {
+    font-size: 1rem;
+  }
+
+  footer {
+    font-size: x-small;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  main {
+    width: 250px;
+  }
+}
+
+@media screen and (max-width: 250px) {
+  main {
+    width: 200px;
+  }
+}
