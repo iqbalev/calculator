@@ -60,34 +60,19 @@ const deleteInput = () => {
 
 const inputKeyPress = (event) => {
   const key = event.key;
-  switch (key) {
-    case "Escape":
-      return clearResult();
-    case "Backspace":
-      return deleteInput();
-    case "0":
-    case "1":
-    case "2":
-    case "3":
-    case "4":
-    case "5":
-    case "6":
-    case "7":
-    case "8":
-    case "9":
-      return inputNumber(key);
-    case ".":
-      return inputDot();
-    case "+":
-    case "-":
-    case "*":
-    case "/":
-      return inputOperator(key);
-    case "Enter":
-    case "=":
-      return calculateResult();
-    default:
-      break;
+
+  if (key === "Escape") {
+    clearResult();
+  } else if (key === "Backspace") {
+    deleteInput();
+  } else if (!isNaN(key)) {
+    inputNumber(key);
+  } else if (key === ".") {
+    inputDot();
+  } else if (["+", "-", "*", "/"].includes(key)) {
+    inputOperator(key);
+  } else if (key === "Enter" || key === "=") {
+    calculateResult();
   }
 };
 
