@@ -106,11 +106,15 @@ const inputDot = () => {
 };
 
 const inputOperator = (operator) => {
-  if (!isOperatorSelected || isResultGenerated) {
-    isOperatorSelected = true;
-    selectedOperator = operator;
-    isResultGenerated = false;
+  if (firstInput && secondInput) {
+    calculateResult();
+    firstInput = result.toString();
+    secondInput = "";
   }
+
+  isOperatorSelected = true;
+  selectedOperator = operator;
+  isResultGenerated = false;
 };
 
 const calculateResult = () => {
