@@ -26,7 +26,7 @@ main {
   padding: 20px;
   border-bottom: 1px solid #fff;
   text-align: right;
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: #fff;
 }
 
@@ -56,8 +56,13 @@ main {
   background-color: #383636;
 }
 
-.row .operator {
+.row .operator,
+#equals {
   color: #ff4500;
+}
+
+.row .operator:focus {
+  background-color: #383636;
 }
 
 footer {
@@ -81,7 +86,7 @@ footer a {
   }
 
   .display {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .row button {
@@ -96,6 +101,10 @@ footer a {
 @media screen and (max-width: 300px) {
   main {
     width: 250px;
+  }
+
+  footer {
+    font-size: xx-small;
   }
 }
 
