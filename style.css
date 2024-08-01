@@ -23,9 +23,10 @@ main {
 }
 
 .display {
-  padding: 20px;
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 20px 0;
   border-bottom: 1px solid #fff;
-  text-align: right;
   font-size: 2rem;
   color: #fff;
 }
@@ -33,7 +34,7 @@ main {
 .buttons {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 }
 
 .row {
