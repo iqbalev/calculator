@@ -7,12 +7,12 @@ const dotButton = document.getElementById("dot");
 const mathOperatorButtons = document.querySelectorAll(".operator");
 const equalsButton = document.getElementById("equals");
 let result = "";
-let firstInput = "";
-let secondInput = "";
-let selectedOperator = "";
+let firstOperand = "";
+let secondOperand = "";
+let currentOperator = "";
 let isOperatorSelected = false;
 let isResultGenerated = false;
-const maximumNumberOfInputCharacters = 11;
+const maximumNumberOfInputCharacters = 9;
 
 // LIST OF FUNCTIONS
 const add = (x, y) => x + y;
@@ -40,9 +40,9 @@ const operate = (operator, firstNumber, secondNumber) => {
 
 const clearResult = () => {
   result = "";
-  firstInput = "";
-  secondInput = "";
-  selectedOperator = "";
+  firstOperand = "";
+  secondOperand = "";
+  currentOperator = "";
   isOperatorSelected = false;
   isResultGenerated = false;
   display.textContent = 0;
@@ -50,11 +50,11 @@ const clearResult = () => {
 
 const deleteInput = () => {
   if (!isOperatorSelected) {
-    firstInput = firstInput.slice(0, -1);
-    display.textContent = firstInput || 0;
+    firstOperand = firstOperand.slice(0, -1);
+    display.textContent = firstOperand || 0;
   } else {
-    secondInput = secondInput.slice(0, -1);
-    display.textContent = secondInput || 0;
+    secondOperand = secondOperand.slice(0, -1);
+    display.textContent = secondOperand || 0;
   }
 };
 
@@ -78,64 +78,64 @@ const inputKeyPress = (event) => {
 
 const inputNumber = (number) => {
   if (isResultGenerated && !isOperatorSelected) {
-    firstInput = "";
+    firstOperand = "";
   }
   isResultGenerated = false;
 
   if (!isOperatorSelected) {
-    if (firstInput.length < maximumNumberOfInputCharacters) {
-      firstInput += number;
-      display.textContent = firstInput;
+    if (firstOperand.length < maximumNumberOfInputCharacters) {
+      firstOperand += number;
+      display.textContent = firstOperand;
     }
   } else {
-    if (secondInput.length < maximumNumberOfInputCharacters) {
-      secondInput += number;
-      display.textContent = secondInput;
+    if (secondOperand.length < maximumNumberOfInputCharacters) {
+      secondOperand += number;
+      display.textContent = secondOperand;
     }
   }
 };
 
 const inputDot = () => {
-  if (!isOperatorSelected && !firstInput.includes(".")) {
-    firstInput += dotButton.textContent;
-    display.textContent = firstInput;
-  } else if (isOperatorSelected && !secondInput.includes(".")) {
-    secondInput += dotButton.textContent;
-    display.textContent = secondInput;
+  if (!isOperatorSelected && !firstOperand.includes(".")) {
+    firstOperand += dotButton.textContent;
+    display.textContent = firstOperand;
+  } else if (isOperatorSelected && !secondOperand.includes(".")) {
+    secondOperand += dotButton.textContent;
+    display.textContent = secondOperand;
   }
 };
 
 const inputOperator = (operator) => {
-  if (firstInput && secondInput) {
+  if (firstOperand && secondOperand) {
     calculateResult();
-    firstInput = result.toString();
-    secondInput = "";
+    firstOperand = result.toString();
+    secondOperand = "";
   }
 
   isOperatorSelected = true;
-  selectedOperator = operator;
+  currentOperator = operator;
   isResultGenerated = false;
 };
 
 const calculateResult = () => {
-  if (isOperatorSelected && secondInput) {
+  if (isOperatorSelected && secondOperand) {
     result = operate(
-      selectedOperator,
-      parseFloat(firstInput),
-      parseFloat(secondInput)
+      currentOperator,
+      parseFloat(firstOperand),
+      parseFloat(secondOperand)
     );
   }
 
   if (result === "Error") {
-    display.textContent = "ERROR";
+    display.textContent = "Error";
   } else {
     display.textContent = Number.isInteger(result) ? result : result.toFixed(1);
   }
 
   // Final result will be used as first input, so it can be used for next calculation
-  firstInput = result.toString();
-  secondInput = "";
-  selectedOperator = "";
+  firstOperand = result.toString();
+  secondOperand = "";
+  currentOperator = "";
   isOperatorSelected = false;
   isResultGenerated = true;
 };
