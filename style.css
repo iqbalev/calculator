@@ -5,11 +5,11 @@
 }
 
 :root {
-  --orange: #ff4500;
-  --white: #fff;
-  --dark-grey: #383636;
-  --light-grey: #3f3c3c;
-  --black: #272626;
+  --black: #141414;
+  --dark-purple: #1d0019;
+  --light-grey: #585658;
+  --purple: #9386ac;
+  --white: #eeedee;
 }
 
 body {
@@ -17,23 +17,24 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 30px;
   height: 100vh;
   font-family: "Martian Mono", sans-serif;
-  background-image: linear-gradient(var(--light-grey), var(--black));
+  background-image: linear-gradient(var(--light-grey), var(--dark-purple));
 }
 
 main {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  width: 350px;
-  padding: 20px;
+  width: 300px;
+  padding: 15px;
+  border: 1px solid var(--white);
 }
 
 .display {
   display: flex;
   flex-direction: row-reverse;
-  padding: 20px 0;
+  padding: 15px 0;
   border-bottom: 1px solid var(--white);
   font-size: 2rem;
   color: var(--white);
@@ -42,56 +43,46 @@ main {
 .buttons {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  padding: 15px;
 }
 
 .row {
   display: flex;
-  gap: 10px;
 }
 
 .row button {
   flex: 1;
-  padding: 10px;
+  padding: 15px;
   border: none;
   font-family: "Martian Mono", sans-serif;
   font-size: 1.5rem;
   background-color: transparent;
   cursor: pointer;
   color: var(--white);
-}
-
-.row button:hover {
-  background-color: var(--dark-grey);
-}
-
-.row .operator,
-#equals {
-  color: var(--orange);
+  outline: none;
 }
 
 .row .operator:focus {
-  background-color: var(--dark-grey);
+  color: var(--purple);
 }
 
 footer {
-  padding: 20px;
-  text-align: center;
-  letter-spacing: 5px;
-  line-height: 2;
+  padding: 15px;
+  font-family: rubik, sans-serif;
   font-weight: lighter;
-  font-size: small;
+  letter-spacing: 10px;
+  line-height: 1.3;
+  text-align: center;
 }
 
 footer,
 footer a {
   color: var(--white);
-  border-left: 1px;
 }
 
 @media screen and (max-width: 350px) {
   main {
-    width: 300px;
+    width: 250px;
   }
 
   .display {
@@ -103,22 +94,44 @@ footer a {
   }
 
   footer {
-    font-size: x-small;
+    font-size: smaller;
+    letter-spacing: 8px;
   }
 }
 
 @media screen and (max-width: 300px) {
   main {
-    width: 250px;
+    width: 200px;
+  }
+
+  .display {
+    font-size: 1rem;
+  }
+
+  .buttons {
+    padding: 5px;
   }
 
   footer {
-    font-size: xx-small;
+    font-size: x-small;
+    letter-spacing: 5px;
   }
 }
 
 @media screen and (max-width: 250px) {
   main {
-    width: 200px;
+    width: 150px;
+  }
+
+  .buttons {
+    padding: 0;
+  }
+
+  .row button {
+    padding: 10px;
+  }
+
+  footer {
+    letter-spacing: 2px;
   }
 }
