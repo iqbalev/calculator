@@ -12,7 +12,7 @@ let secondOperand = "";
 let currentOperator = "";
 let isOperatorSelected = false;
 let isResultGenerated = false;
-const maximumNumberOfInputCharacters = 9;
+const maximumDigits = 9;
 
 // LIST OF FUNCTIONS
 const add = (x, y) => x + y;
@@ -48,7 +48,7 @@ const clearResult = () => {
   display.textContent = 0;
 };
 
-const deleteInput = () => {
+const deleteNumber = () => {
   if (!isOperatorSelected) {
     firstOperand = firstOperand.slice(0, -1);
     display.textContent = firstOperand || 0;
@@ -64,7 +64,7 @@ const inputKeyPress = (event) => {
   if (key === "Escape") {
     clearResult();
   } else if (key === "Backspace") {
-    deleteInput();
+    deleteNumber();
   } else if (!isNaN(key)) {
     inputNumber(key);
   } else if (key === ".") {
@@ -83,12 +83,12 @@ const inputNumber = (number) => {
   isResultGenerated = false;
 
   if (!isOperatorSelected) {
-    if (firstOperand.length < maximumNumberOfInputCharacters) {
+    if (firstOperand.length < maximumDigits) {
       firstOperand += number;
       display.textContent = firstOperand;
     }
   } else {
-    if (secondOperand.length < maximumNumberOfInputCharacters) {
+    if (secondOperand.length < maximumDigits) {
       secondOperand += number;
       display.textContent = secondOperand;
     }
@@ -126,10 +126,17 @@ const calculateResult = () => {
     );
   }
 
-  if (result === "Error") {
+  const resultString = result.toString();
+
+  if (result === "Error" || firstOperand === "") {
     display.textContent = "Error";
   } else {
-    display.textContent = Number.isInteger(result) ? result : result.toFixed(1);
+    // This will make a result with long numbers do not overflow outside the display container because it will cut some decimals or convert the result to scientific notation if needed
+    if (resultString.length > maximumDigits) {
+      display.textContent = result.toPrecision(5);
+    } else {
+      display.textContent = result;
+    }
   }
 
   // Final result will be used as first input, so it can be used for next calculation
@@ -143,7 +150,7 @@ const calculateResult = () => {
 // LIST OF EVENT LISTENERS
 document.addEventListener("keydown", inputKeyPress);
 clearButton.addEventListener("click", () => clearResult());
-deleteButton.addEventListener("click", () => deleteInput());
+deleteButton.addEventListener("click", () => deleteNumber());
 numberButtons.forEach((number) =>
   number.addEventListener("click", () => inputNumber(number.textContent))
 );
