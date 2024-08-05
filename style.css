@@ -6,8 +6,9 @@
 
 :root {
   --black: #141414;
-  --dark-purple: #1d0019;
+  --dark-grey: #9386ac1a;
   --light-grey: #585658;
+  --dark-purple: #1d0019;
   --purple: #9386ac;
   --white: #eeedee;
 }
@@ -62,14 +63,17 @@ main {
   outline: none;
 }
 
+.row button:hover {
+  background-color: var(--dark-grey);
+}
+
 .row .operator:focus {
   color: var(--purple);
 }
 
 footer {
   padding: 15px;
-  font-family: rubik, sans-serif;
-  font-weight: lighter;
+  font-family: Jost, sans-serif;
   letter-spacing: 10px;
   line-height: 1.3;
   text-align: center;
