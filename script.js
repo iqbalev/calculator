@@ -49,6 +49,8 @@ const clearResult = () => {
 };
 
 const deleteNumber = () => {
+  if (display.textContent.includes("e")) clearResult();
+
   if (!isOperatorSelected) {
     firstOperand = firstOperand.slice(0, -1);
     display.textContent = firstOperand || 0;
@@ -118,7 +120,11 @@ const inputOperator = (operator) => {
 };
 
 const calculateResult = () => {
-  if (isOperatorSelected && secondOperand) {
+  if (!isOperatorSelected && secondOperand === "") return;
+
+  if (secondOperand === "") {
+    secondOperand = firstOperand;
+
     result = operate(
       currentOperator,
       parseFloat(firstOperand),
@@ -126,14 +132,19 @@ const calculateResult = () => {
     );
   }
 
-  const resultString = result.toString();
+  result = operate(
+    currentOperator,
+    parseFloat(firstOperand),
+    parseFloat(secondOperand)
+  );
 
-  if (result === "Error" || firstOperand === "") {
+  if (result === "Error") {
     display.textContent = "Error";
   } else {
-    // This will make a result with long numbers do not overflow outside the display container because it will cut some decimals or convert the result to scientific notation if needed
+    // This will make a result with long numbers do not overflow outside the display container, because it will cut some decimals or convert the result to scientific notation if needed
+    const resultString = result.toString();
     if (resultString.length > maximumDigits) {
-      display.textContent = result.toPrecision(5);
+      display.textContent = result.toPrecision(4);
     } else {
       display.textContent = result;
     }
