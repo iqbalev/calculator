@@ -79,19 +79,19 @@ const inputKeyPress = (event) => {
 };
 
 const inputNumber = (number) => {
-  if (isResultGenerated && !isOperatorSelected) {
-    firstOperand = "";
-  }
+  if (isResultGenerated && !isOperatorSelected) firstOperand = "";
   isResultGenerated = false;
 
   if (!isOperatorSelected) {
     if (firstOperand.length < maximumDigits) {
-      firstOperand += number;
+      firstOperand === "0" ? (firstOperand = number) : (firstOperand += number);
       display.textContent = firstOperand;
     }
   } else {
     if (secondOperand.length < maximumDigits) {
-      secondOperand += number;
+      secondOperand === "0"
+        ? (secondOperand = number)
+        : (secondOperand += number);
       display.textContent = secondOperand;
     }
   }
