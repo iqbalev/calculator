@@ -98,12 +98,22 @@ const inputNumber = (number) => {
 };
 
 const inputDot = () => {
-  if (!isOperatorSelected && !firstOperand.includes(".")) {
-    firstOperand += dotButton.textContent;
-    display.textContent = firstOperand;
-  } else if (isOperatorSelected && !secondOperand.includes(".")) {
-    secondOperand += dotButton.textContent;
-    display.textContent = secondOperand;
+  if (!isOperatorSelected) {
+    if (firstOperand === "") {
+      firstOperand = "0";
+    }
+    if (!firstOperand.includes(".")) {
+      firstOperand += dotButton.textContent;
+      display.textContent = firstOperand;
+    }
+  } else {
+    if (secondOperand === "") {
+      secondOperand = "0";
+    }
+    if (!secondOperand.includes(".")) {
+      secondOperand += dotButton.textContent;
+      display.textContent = secondOperand;
+    }
   }
 };
 
