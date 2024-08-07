@@ -154,7 +154,8 @@ const calculateResult = () => {
     // This will make a result with long numbers do not overflow outside the display container, because it will cut some decimals or convert the result to scientific notation if needed
     const resultString = result.toString();
     if (resultString.length > maximumDigits) {
-      display.textContent = result.toPrecision(4);
+      result = result.toPrecision(4);
+      display.textContent = result;
     } else {
       display.textContent = result;
     }
@@ -169,7 +170,11 @@ const calculateResult = () => {
 };
 
 // LIST OF EVENT LISTENERS
-document.addEventListener("keydown", inputKeyPress);
+document.addEventListener("keydown", (e) => {
+  e.preventDefault();
+  inputKeyPress(e);
+});
+
 clearButton.addEventListener("click", () => clearResult());
 deleteButton.addEventListener("click", () => deleteNumber());
 numberButtons.forEach((number) =>
