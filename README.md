@@ -6,3 +6,4 @@
 - Clear all entry.
 - Delete numbers one by one (undo).
 - Keyboard support.
+- Responsive design.
